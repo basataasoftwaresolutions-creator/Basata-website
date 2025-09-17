@@ -1,9 +1,9 @@
 const Stats = () => {
   const stats = [
-    { number: "100+", label: "Happy Clients" },
-    { number: "100+", label: "Happy Clients" },
-    { number: "100+", label: "Happy Clients" },
-    { number: "100+", label: "Happy Clients" },
+    { number: "200+", label: "مشروع" },
+    { number: "150+", label: "تقييم" },
+    { number: "150+", label: "عمل" },
+    { number: "100+", label: "خدمة" },
   ];
 
   return (
