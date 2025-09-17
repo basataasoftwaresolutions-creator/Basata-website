@@ -7,15 +7,15 @@ const Stats = () => {
   ];
 
   return (
-    <section className="relative z-10 -mt-20 pb-20">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+    <section className="relative z-10 -mt-20 pb-20 w-full">
+      <div className="container mx-auto px-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto ">
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="bg-card/80 backdrop-blur-sm rounded-2xl p-8 text-center shadow-card border border-border/50 hover:shadow-glow transition-all duration-300"
+              className="bg-card/80 backdrop-blur-sm rounded-2xl py-6 text-center shadow-card border border-border/50 hover:shadow-glow transition-all duration-300 bg-[#FEFDFB] px-16"
             >
-              <div className="text-4xl md:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">
+              <div className="text-4xl md:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2 text-[#FF9705]">
                 {stat.number}
               </div>
               <div className="text-muted-foreground font-medium">

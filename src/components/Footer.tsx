@@ -8,13 +8,11 @@ const Footer = () => {
           {/* Company Info */}
           <div className="md:col-span-1">
             <div className="flex items-center space-x-2 mb-6">
-              <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">B</span>
-              </div>
-              <div className="flex flex-col">
+              <img className="w-30 h-30" src="public/logo.svg" alt="Basataa Logo" />
+              {/* <div className="flex flex-col">
                 <span className="text-foreground font-bold text-xl">Basataa</span>
                 <span className="text-muted-foreground text-xs">SOFTWARE SOLUTIONS</span>
-              </div>
+              </div> */}
             </div>
             <p className="text-muted-foreground leading-relaxed">
               We innovate, develop, and elevate your ideas to a new level of professionalism.
