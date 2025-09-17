@@ -3,16 +3,12 @@ import { Button } from "@/components/ui/button";
 
 const Navigation = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-none border-none border-border">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-2">            
-            <img className="w-30 h-30 rounded-md" src="public/logo.svg" alt="Basataa Logo" />
-            {/* <div className="flex flex-col">
-              <span className="text-foreground font-bold text-xl">Basataa</span>
-              <span className="text-muted-foreground text-xs">SOFTWARE SOLUTIONS</span>
-            </div> */}
+            <img className="w-30 h-30 rounded-md" src="public/logo.svg" alt="Basataa Logo" />            
           </div>
 
           {/* Navigation Links */}
