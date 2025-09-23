@@ -1,18 +1,63 @@
+/* src/index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 0 0% 16%;
-    --foreground: 0 0% 98%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 16%;
 
     --card: 0 0% 98%;
     --card-foreground: 0 0% 16%;
+
+    --popover: 0 0% 98%;
+    --popover-foreground: 0 0% 16%;
+
+    --primary: 33 100% 50%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 16%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 33 100% 50%;
+    --accent-foreground: 0 0% 16%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 33 100% 50%;
+
+    --radius: 0.75rem;
+    
+    /* Custom gradient colors */
+    --gradient-orange: 33 100% 50%;
+    --gradient-blue: 217 91% 60%;
+    --gradient-purple: 258 90% 66%;
+    
+    /* Custom gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--gradient-orange)) 0%, hsl(var(--gradient-blue)) 100%);
+    --gradient-orb: linear-gradient(135deg, hsl(var(--gradient-orange)) 0%, hsl(var(--gradient-purple)) 50%, hsl(var(--gradient-blue)) 100%);
+    
+    /* Shadows */
+    --shadow-glow: 0 0 40px hsl(var(--gradient-orange) / 0.3);
+    --shadow-card: 0 10px 30px -10px hsl(0 0% 0% / 0.1);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 0 0% 16%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 20%;
+    --card-foreground: 0 0% 98%;
 
     --popover: 0 0% 20%;
     --popover-foreground: 0 0% 98%;
@@ -35,33 +80,10 @@ All colors MUST be HSL.
     --border: 0 0% 25%;
     --input: 0 0% 25%;
     --ring: 33 100% 50%;
-
-    --radius: 0.75rem;
     
-    /* Custom gradient colors - exact Figma colors */
-    --gradient-orange: 33 100% 50%;
-    --gradient-blue: 217 91% 60%;
-    --gradient-purple: 258 90% 66%;
-    
-    /* Custom gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--gradient-orange)) 0%, hsl(var(--gradient-blue)) 100%);
-    --gradient-orb: linear-gradient(135deg, hsl(var(--gradient-orange)) 0%, hsl(var(--gradient-purple)) 50%, hsl(var(--gradient-blue)) 100%);
-    
-    /* Shadows */
+    /* Shadows for dark mode */
     --shadow-glow: 0 0 40px hsl(var(--gradient-orange) / 0.3);
     --shadow-card: 0 10px 30px -10px hsl(0 0% 0% / 0.3);
-    
-    /* Transitions */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-    --sidebar-background: 0 0% 20%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 33 100% 50%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 0 0% 25%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 0 0% 25%;
-    --sidebar-ring: 33 100% 50%;
   }
 }
 
@@ -72,5 +94,488 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    transition: var(--transition-smooth);
+  }
+}
+
+/* Fix for RTL spacing */
+[dir="rtl"] .space-x-2 > :not([hidden]) ~ :not([hidden]) {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+[dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  margin-left: 0;
+  margin-right: 1rem;
+}
+
+[dir="rtl"] .space-x-6 > :not([hidden]) ~ :not([hidden]) {
+  margin-left: 0;
+  margin-right: 1.5rem;
+}
+
+[dir="rtl"] .space-x-8 > :not([hidden]) ~ :not([hidden]) {
+  margin-left: 0;
+  margin-right: 2rem;
+}
+
+/* Fix gap issues in RTL */
+[dir="rtl"] .gap-2 {
+  gap: 0.5rem;
+}
+
+[dir="rtl"] .gap-4 {
+  gap: 1rem;
+}
+
+/* Custom gradient classes */
+.bg-gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.bg-gradient-orb {
+  background: var(--gradient-orb);
+}
+
+/* Gradient orb animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.05);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Animation delays */
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-3000 {
+  animation-delay: 3s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Gradient radial for orbs */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-from), var(--tw-gradient-to));
+}
+
+/* Custom shadows */
+.shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+.shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--secondary));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.8);
+}
+
+/* Hero section specific dark background */
+.hero-dark {
+  background-color: #222323;
+}
+
+.dark .hero-dark {
+  background-color: #0a0a0a;
+}
+
+/* Typewriter cursor blink */
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+.typewriter-cursor {
+  animation: blink 1s infinite;
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: var(--transition-smooth);
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-glow);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Orange accent color */
+.text-orange {
+  color: hsl(var(--gradient-orange));
+}
+
+.bg-orange {
+  background-color: hsl(var(--gradient-orange));
+}
+
+.bg-orange-light {
+  background-color: hsl(var(--gradient-orange) / 0.1);
+}
+
+.dark .bg-orange-light {
+  background-color: hsl(var(--gradient-orange) / 0.2);
+}
+
+/* Mobile menu fixes */
+@media (max-width: 768px) {
+  /* Fix navigation container */
+  nav .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Fix mobile menu positioning */
+  .fixed.top{
+    top: 72px;
+  }
+  
+  /* Ensure proper spacing for RTL in mobile */
+  [dir="rtl"] .flex.items-center.space-x-4 > :not([hidden]) ~ :not([hidden]) {
+    margin-left: 0;
+    margin-right: 1rem;
+  }
+  
+  /* Fix button spacing in mobile */
+  button.mx-5 {
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+  }
+  
+  [dir="rtl"] button.mx-5 {
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+  }
+}
+
+/* Fix for mobile menu overlay height */
+.fixed.inset-x-0.top-
+.bottom-0 {
+  height: calc(100vh - 72px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Improve mobile menu appearance */
+@media (max-width: 640px) {
+  /* Smaller padding on mobile */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Adjust logo size on very small screens */
+  img.w-20.h-10 {
+    width: 4rem;
+    height: 2.5rem;
+  }
+  
+  /* Fix menu button alignment */
+  button.w-10.h-10 {
+    width: 2.5rem;
+    height: 2.5rem;
+    min-width: 2.5rem;
+  }
+  
+  /* Adjust mobile menu padding */
+  .fixed.inset-x-0.top-
+.container {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+  
+  /* Smaller text in mobile menu */
+  .text-xl {
+    font-size: 1.125rem;
+  }
+  
+  /* Adjust social icons spacing */
+  .space-x-6 > :not([hidden]) ~ :not([hidden]) {
+    margin-left: 1rem;
+  }
+  
+  [dir="rtl"] .space-x-6 > :not([hidden]) ~ :not([hidden]) {
+    margin-left: 0;
+    margin-right: 1rem;
+  }
+}
+
+/* Fix hamburger menu lines alignment */
+button.flex.flex-col span {
+  transform-origin: center;
+  transition: all 0.3s ease;
+}
+
+/* Ensure proper z-index stacking */
+.z-40 {
+  z-index: 40;
+}
+
+.z-50 {
+  z-index: 50;
+}
+
+/* Fix for iOS Safari */
+@supports (-webkit-touch-callout: none) {
+  .fixed {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+/* Improve mobile menu animation */
+@media (max-width: 768px) {
+  /* Smooth transitions */
+  .transition-all {
+    transition: all 0.3s ease;
+  }
+  
+  /* Better touch targets */
+  a, button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Fix overflow issues */
+  body.menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+}
+
+/* Transition for all theme-aware elements */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Backdrop blur support */
+.backdrop-blur-md {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.backdrop-blur-lg {
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+/* Glass morphism effect */
+.glass {
+  background: hsl(var(--background) / 0.8);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid hsl(var(--border) / 0.5);
+}
+
+.dark .glass {
+  background: hsl(var(--card) / 0.8);
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* RTL specific fixes for mobile menu */
+@media (max-width: 768px) {
+  [dir="rtl"] .gap-4 {
+    gap: 1rem;
+  }
+  
+  [dir="rtl"] .space-y-2 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 0.5rem;
+  }
+  
+  [dir="rtl"] .space-y-3 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 0.75rem;
+  }
+  
+  [dir="rtl"] .space-y-4 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 1rem;
+  }
+}
+
+/* Ensure menu button is always clickable */
+button[aria-label="Toggle menu"] {
+  position: relative;
+  z-index: 50;
+  touch-action: manipulation;
+}
+
+/* Fix for gap property in flexbox */
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.gap-3 {
+  gap: 0.75rem;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
+}
+
+/* Smooth transitions for mobile menu items */
+@media (max-width: 768px) {
+  .transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+  
+  /* Fix text sizes on small screens */
+  .text-lg {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  
+  .text-xl {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+  
+  /* Ensure icons maintain their size */
+  .w-5.h-5 {
+    width: 1.25rem;
+    height: 1.25rem;
+    min-width: 1.25rem;
+    min-height: 1.25rem;
+  }
+  
+  .w-6.h-6 {
+    width: 1.5rem;
+    height: 1.5rem;
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+  }
+}
+
+/* Fix padding for small screens */
+@media (max-width: 640px) {
+  .p-4 {
+    padding: 1rem;
+  }
+  
+  .p-5 {
+    padding: 1.25rem;
+  }
+  
+  .px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .py-6 {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+}
+
+/* Ensure mobile menu content is scrollable */
+.overflow-y-auto {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+/* Fix for flex-shrink */
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+
+/* Additional utility classes */
+.object-contain {
+  object-fit: contain;
+}
+
+.origin-center {
+  transform-origin: center;
+}
+
+/* Ensure text doesn't wrap in buttons */
+@media (max-width: 640px) {
+  button span {
+    white-space: nowrap;
+  }
+}
+
+/* Final touch - ensure mobile menu works properly */
+@media (max-width: 768px) {
+  /* Prevent horizontal scroll when menu is open */
+  html {
+    overflow-x: hidden;
+  }
+  
+  /* Ensure menu backdrop covers entire screen */
+  .fixed.inset-0 {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  
+  /* Ensure menu content is properly positioned */
+  .fixed.inset-x-0.top-
+  .bottom-0 {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 72px;
+    bottom: 0;
   }
 }
