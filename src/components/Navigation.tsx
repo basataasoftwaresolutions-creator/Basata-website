@@ -5,14 +5,16 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Navigation = () => {
   const { theme, toggleTheme } = useTheme();
   const { language, toggleLanguage, t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeLink, setActiveLink] = useState(''); // إضافة state لتتبع الرابط النشط
   const location = useLocation();
+  const navigate = useNavigate();
 
   // Handle scroll effect
   useEffect(() => {
@@ -59,9 +61,82 @@ const Navigation = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
 
+  // دالة للتعامل مع النقر على الروابط
+  const handleLinkClick = (e, href, id) => {
+    e.preventDefault();
+    closeMenu();
+    setActiveLink(id); // تحديد الرابط النشط عند النقر
+
+    if (id === 'home') {
+      // إذا كان رابط Home
+      if (location.pathname !== '/') {
+        navigate('/');
+        setTimeout(() => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        }, 100);
+      } else {
+        // التمرير إلى أعلى الصفحة (Hero section)
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
+    } else if (id === 'about') {
+      // إذا كان رابط About Us
+      if (location.pathname !== '/') {
+        navigate('/');
+        setTimeout(() => {
+          const aboutSection = document.getElementById('about-us');
+          if (aboutSection) {
+            aboutSection.scrollIntoView({ 
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }, 100);
+      } else {
+        const aboutSection = document.getElementById('about-us');
+        if (aboutSection) {
+          aboutSection.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }
+    } else if (href.startsWith('#')) {
+      // للروابط الأخرى التي تبدأ بـ #
+      if (location.pathname !== '/') {
+        navigate('/');
+        setTimeout(() => {
+          const section = document.querySelector(href);
+          if (section) {
+            section.scrollIntoView({ 
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }, 100);
+      } else {
+        const section = document.querySelector(href);
+        if (section) {
+          section.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }
+    } else {
+      // للروابط العادية
+      navigate(href);
+    }
+  };
+
   const navigationLinks = [
-    { id: 'home', href: '/', label: t('home'), icon: Home },
-    { id: 'about', href: '/about', label: t('aboutUs'), icon: Info },
+    { id: 'home', href: '#home', label: t('home'), icon: Home },
+    { id: 'about', href: '#about-us', label: t('aboutUs'), icon: Info },
     { id: 'services', href: '#services', label: t('services'), icon: Briefcase },
     { id: 'projects', href: '#projects', label: t('projects'), icon: FolderOpen },
     { id: 'team', href: '#team', label: t('ourTeam'), icon: Users },
@@ -70,7 +145,7 @@ const Navigation = () => {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-2 z-50 transition-all duration-300 ${
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
           ? 'backdrop-blur-lg bg-[#222323]/95 dark:bg-[#0a0a0a]/95 shadow-lg' 
           : 'backdrop-blur-md bg-[#222323]/90 dark:bg-[#0a0a0a]/90'
@@ -81,7 +156,17 @@ const Navigation = () => {
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="flex items-center"
+              className="flex items-center cursor-pointer"
+              onClick={() => {
+                navigate('/');
+                setActiveLink('home'); // تحديد home كرابط نشط عند الضغط على اللوجو
+                setTimeout(() => {
+                  window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                  });
+                }, 100);
+              }}
             >
               <img className="w-20 h-10 sm:w-24 sm:h-12 object-contain" src="/logo.svg" alt="Basataa Logo" />
             </motion.div>
@@ -96,10 +181,11 @@ const Navigation = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   className={`${
-                    location.pathname === link.href
+                    activeLink === link.id
                       ? 'text-orange font-medium' 
                       : 'text-white hover:text-orange'
-                  } transition-colors relative group`}
+                  } transition-colors relative group cursor-pointer`}
+                  onClick={(e) => handleLinkClick(e, link.href, link.id)}
                 >
                   {link.label}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange transition-all group-hover:w-full"></span>
@@ -202,11 +288,11 @@ const Navigation = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.05 + 0.1 }}
                         className={`flex items-center gap-4 p-4 sm:p-5 rounded-2xl ${
-                          location.pathname === link.href
+                          activeLink === link.id
                             ? 'bg-gradient-to-r from-orange to-orange/80 text-white shadow-lg'
                             : 'text-gray-300 hover:bg-white/5 hover:text-orange'
-                        } transition-all`}
-                        onClick={closeMenu}
+                        } transition-all cursor-pointer`}
+                        onClick={(e) => handleLinkClick(e, link.href, link.id)}
                       >
                         <Icon className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
                         <span className="font-medium text-lg sm:text-xl">{link.label}</span>
@@ -280,7 +366,7 @@ const Navigation = () => {
                   </a>
                   <a href="#" className="text-gray-400 hover:text-orange transition-colors p-2">
                     <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.667.072 4.947.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.667-.014 4.947-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.405a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"/>
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.667.072 4.947.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.667-.014 4.947-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.405a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"/>
                     </svg>
                   </a>
                   <a href="#" className="text-gray-400 hover:text-orange transition-colors p-2">
