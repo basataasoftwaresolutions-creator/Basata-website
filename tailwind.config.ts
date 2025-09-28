@@ -63,12 +63,29 @@ export default {
           blue: "hsl(var(--gradient-blue))",
           purple: "hsl(var(--gradient-purple))",
         },
+
         // Custom orange color
         orange: {
           DEFAULT: "hsl(var(--gradient-orange))",
           light: "hsl(var(--gradient-orange) / 0.1)",
           dark: "hsl(var(--gradient-orange) / 0.2)",
         },
+
+
+        form:{
+          dark:{
+            bg: "#232323",
+            light_gray:"#D9D9D9",
+            gray:"#7E7E7E",
+          }
+        },
+        testimonials:{
+          dark:{
+            bg:"#232323"
+          }
+        }
+        
+
       },
       backgroundImage: {
         'gradient-primary': 'var(--gradient-primary)',
