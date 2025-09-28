@@ -7,17 +7,17 @@ import { Section } from "lucide-react";
 import { WorkExperienceSection } from "@/components/WorkExperienceSection";
 import Contact from "@/components/Contact";
 import { Testimonials } from "@/components/Testimonials";
+import { PortfolioSection } from "@/components/PortfolioSection";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
-      <Hero />
-      <Stats />
+     
       <ProjectsSection />
       <WorkExperienceSection />
       <Testimonials />
       <Contact />
+    
       <Footer />
     </div>
   );
