@@ -15,29 +15,16 @@ import Contact from "@/components/Contact";
 import { Testimonials } from "@/components/Testimonials";
 import { PortfolioSection } from "@/components/PortfolioSection";
 
-
-const Index = () => {
+const Services = () => {
   return (
     <div className="min-h-screen bg-background">
-
       <Navigation />
-      <Hero />
-      <Stats />
-      <AboutUs />
-      <ServiceHome />
-   
-     
-
-     
-      <ProjectsSection />
-      <WorkExperienceSection />
-      <Testimonials />
-      <Contact />
-    
-
+      <PortfolioSection />
+      <ServiceDetails />
+      <ContactForm />
       <Footer />
     </div>
   );
 };
 
-export default Index;
+export default Services;
