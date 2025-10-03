@@ -1,27 +1,31 @@
-import React from "react";
 import { Avatar, AvatarFallback } from "../components/ui/avatar";
-import { Card, CardContent } from "../components/ui/card";
 import Divider from "./Divider";
+import { useLanguage } from "../contexts/LanguageContext";
+import { useTheme } from "../contexts/ThemeContext";
 
 export const Testimonials = (): JSX.Element => {
+  const { t } = useLanguage();
+  const { theme } = useTheme();
+
   return (
    <>
    <Divider />
-    <section className="flex flex-col w-full items-center gap-16 py-48 bg-[#1E1E1E] relative overflow-x-clip">
+    <section className="flex flex-col w-full items-center gap-16 py-48 bg-[#FEFDFB] dark:bg-[#1E1E1E] relative overflow-x-clip"  dir="ltr"
+      style={{ direction: 'ltr' }}>
       <header className="flex flex-col items-center gap-2 translate-y-[-1rem] relative mt-20">
-        <div className="w-[129px] h-[129px]  bg-gradient-orange rounded-[64.5px] absolute top-[-76%] left-[26%] -z-10" />
-
-        <h3 className="[font-family:'Poppins',Helvetica] font-medium text-white text-2xl tracking-[0] leading-[normal]">
-          Testimonial
+        <div className="w-[129px] h-[129px] bg-gradient-orange/25 dark:bg-gradient-orange rounded-[64.5px] absolute top-[-76%] left-[26%] -z-10" />
+    
+        <h3 className="[font-family:'Poppins',Helvetica] font-medium text-[#222323] dark:text-white text-2xl tracking-[0] leading-[normal]">
+          {t('testimonialTitle')}
         </h3>
 
-        <h2 className="[font-family:'Poppins',Helvetica] font-semibold text-white text-5xl text-center tracking-[0] leading-[normal]">
-          Our Client Feedback
+        <h2 className="[font-family:'Poppins',Helvetica] font-semibold text-[#222323] dark:text-white text-5xl text-center tracking-[0] leading-[normal]">
+          {t('testimonialSubtitle')}
         </h2>
       </header>
 
-      <div className="relative w-[70%] md:w-[80%] px-[300px] h-[720px] bg-testimonials-dark-bg overflow-hidden translate-y-[-1rem] z-10">
-        <div className="absolute -top-3.5 left-1/2 transform -translate-x-1/2 w-[392px] h-[816px] bg-gradient-orange" />
+      <div className="relative w-[70%] md:w-[80%] px-[300px] h-[720px] dark:bg-testimonials-dark-bg overflow-hidden translate-y-[-1rem] z-10">
+        <div className="absolute -top-3.5 left-1/2 transform -translate-x-1/2 w-[392px] h-[816px] bg-gradient-to-b from-[#FF9705] to-[#0048FF] dark:bg-gradient-orange" />
 
         <img
           className="absolute top-[81px] left-1/2 transform -translate-x-1/2 w-[99px] h-[72px]"
