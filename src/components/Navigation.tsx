@@ -149,7 +149,7 @@ const Navigation = () => {
         scrolled 
           ? 'backdrop-blur-lg bg-[#222323]/95 dark:bg-[#0a0a0a]/95 shadow-lg' 
           : 'backdrop-blur-md bg-[#222323]/90 dark:bg-[#0a0a0a]/90'
-      } border-b border-white/10`}>
+      } border-b border-white/10`} dir="ltr" style={{ direction: 'ltr' }}>
         <div className="container mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}

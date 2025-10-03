@@ -25,10 +25,6 @@ const Index = () => {
       <Stats />
       <AboutUs />
       <ServiceHome />
-   
-     
-
-     
       <ProjectsSection />
       <WorkExperienceSection />
       <Testimonials />

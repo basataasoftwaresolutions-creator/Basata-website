@@ -98,6 +98,11 @@ const translations = {
     budget2500: '$1,000 - $2,500',
     budget5000: '$2,500 - $5,000',
     budget10000: '$5,000+',
+
+    // Testimonials
+    testimonialTitle: "Testimonial",
+    testimonialSubtitle: "Our Client Feedback",
+    testimonialFeedback: "The team took time to understand our vision and delivered a sleek, professional site that not only looks great but also improved our conversion rates. Their design process was smooth, communication was clear, and they met all deadlines. We've received numerous compliments on the new site, and it's easier for customers to navigate. I can confidently say we'll be working with them again in the future.\"\"",
     
     // Footer
     footerDescription: 'We innovate, develop, and elevate your ideas to a new level of professionalism.',
@@ -193,7 +198,11 @@ const translations = {
     budget2500: '1,000$ - 2,500$',
     budget5000: '2,500$ - 5,000$',
     budget10000: '5,000$+',
-    
+
+    // Testimonials
+    testimonialTitle: "الاراء",
+    testimonialSubtitle: "نبذه عن اراء عملائنا وتقيماتهم",
+
     // Footer
     footerDescription: 'نحن نبتكر ونطور ونرتقي بأفكارك إلى مستوى جديد من الاحترافية.',
     pages: 'الصفحات',
