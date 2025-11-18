@@ -5,7 +5,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 
 const Navigation = () => {
   const { theme, toggleTheme } = useTheme();
@@ -137,7 +137,7 @@ const Navigation = () => {
   const navigationLinks = [
     { id: 'home', href: '#home', label: t('home'), icon: Home },
     { id: 'about', href: '#about-us', label: t('aboutUs'), icon: Info },
-    { id: 'services', href: '#services', label: t('services'), icon: Briefcase },
+    { id: 'services', href: '/services', label: t('services'), icon: Briefcase },
     { id: 'projects', href: '#projects', label: t('projects'), icon: FolderOpen },
     { id: 'team', href: '#team', label: t('ourTeam'), icon: Users },
     { id: 'contact', href: '#contact', label: t('contactUs'), icon: Mail },
@@ -173,24 +173,59 @@ const Navigation = () => {
 
             {/* Desktop Navigation Links */}
             <div className="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
-              {navigationLinks.map((link, index) => (
-                <motion.a
-                  key={link.id}
-                  href={link.href}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className={`${
-                    activeLink === link.id
-                      ? 'text-orange font-medium' 
-                      : 'text-white hover:text-orange'
-                  } transition-colors relative group cursor-pointer`}
-                  onClick={(e) => handleLinkClick(e, link.href, link.id)}
-                >
-                  {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange transition-all group-hover:w-full"></span>
-                </motion.a>
-              ))}
+              {navigationLinks.map((link, index) => {
+                const isServicesLink = link.id === 'services';
+                const linkContent = (
+                  <>
+                    {link.label}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange transition-all group-hover:w-full"></span>
+                  </>
+                );
+
+                if (isServicesLink) {
+                  return (
+                    <motion.div
+                      key={link.id}
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <Link
+                        to={link.href}
+                        className={`${
+                          activeLink === link.id || location.pathname === link.href
+                            ? 'text-orange font-medium' 
+                            : 'text-white hover:text-orange'
+                        } transition-colors relative group cursor-pointer`}
+                        onClick={() => {
+                          setActiveLink(link.id);
+                          closeMenu();
+                        }}
+                      >
+                        {linkContent}
+                      </Link>
+                    </motion.div>
+                  );
+                }
+
+                return (
+                  <motion.a
+                    key={link.id}
+                    href={link.href}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className={`${
+                      activeLink === link.id
+                        ? 'text-orange font-medium' 
+                        : 'text-white hover:text-orange'
+                    } transition-colors relative group cursor-pointer`}
+                    onClick={(e) => handleLinkClick(e, link.href, link.id)}
+                  >
+                    {linkContent}
+                  </motion.a>
+                );
+              })}
             </div>
 
             {/* Desktop Theme/Language Toggle */}
@@ -280,6 +315,40 @@ const Navigation = () => {
                 <nav className="space-y-2">
                   {navigationLinks.map((link, index) => {
                     const Icon = link.icon;
+                    const isServicesLink = link.id === 'services';
+                    const linkContent = (
+                      <>
+                        <Icon className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
+                        <span className="font-medium text-lg sm:text-xl">{link.label}</span>
+                      </>
+                    );
+
+                    if (isServicesLink) {
+                      return (
+                        <motion.div
+                          key={link.id}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.05 + 0.1 }}
+                        >
+                          <Link
+                            to={link.href}
+                            className={`flex items-center gap-4 p-4 sm:p-5 rounded-2xl ${
+                              activeLink === link.id || location.pathname === link.href
+                                ? 'bg-gradient-to-r from-orange to-orange/80 text-white shadow-lg'
+                                : 'text-gray-300 hover:bg-white/5 hover:text-orange'
+                            } transition-all cursor-pointer`}
+                            onClick={() => {
+                              setActiveLink(link.id);
+                              closeMenu();
+                            }}
+                          >
+                            {linkContent}
+                          </Link>
+                        </motion.div>
+                      );
+                    }
+
                     return (
                       <motion.a
                         key={link.id}
@@ -294,8 +363,7 @@ const Navigation = () => {
                         } transition-all cursor-pointer`}
                         onClick={(e) => handleLinkClick(e, link.href, link.id)}
                       >
-                        <Icon className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
-                        <span className="font-medium text-lg sm:text-xl">{link.label}</span>
+                        {linkContent}
                       </motion.a>
                     );
                   })}
