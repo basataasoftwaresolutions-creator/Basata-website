@@ -104,6 +104,31 @@ const translations = {
     testimonialSubtitle: "Our Client Feedback",
     testimonialFeedback: "The team took time to understand our vision and delivered a sleek, professional site that not only looks great but also improved our conversion rates. Their design process was smooth, communication was clear, and they met all deadlines. We've received numerous compliments on the new site, and it's easier for customers to navigate. I can confidently say we'll be working with them again in the future.\"\"",
     
+    // Projects
+    ourWorks: "Our Works",
+    all: "All",
+    uiUxDesign: "UI UX Design",
+    websiteDevelopment: "Website Development",
+    mobileApp: "Mobile App",
+    fullProject: "Full Project",
+    
+    // Work Experience
+    workExperience: "Work Experience",
+    ourWorkExperience: "Our Work Experience",
+    experienceDesigner: "Experience Designer",
+    uiUxDesigner: "UI/UX Designer",
+    leadUxDesigner: "Lead UX Designer",
+    workExperienceDescription1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus nunc, posuere in justo vulputate, bibendum sodales",
+    workExperienceDescription2: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus nunc, posuere in justo vulputate, bibendum sodales",
+    
+    // Portfolio
+    ecommerce: "E-commerce",
+    dashboard: "Dashboard",
+    landingPage: "Landing Page",
+    business: "Business",
+    visitWebsite: "Visit Website",
+    more: "More",
+    
     // Footer
     footerDescription: 'We innovate, develop, and elevate your ideas to a new level of professionalism.',
     pages: 'Pages',
@@ -202,6 +227,31 @@ const translations = {
     // Testimonials
     testimonialTitle: "الاراء",
     testimonialSubtitle: "نبذه عن اراء عملائنا وتقيماتهم",
+
+    // Projects
+    ourWorks: "أعمالنا",
+    all: "الكل",
+    uiUxDesign: "تصميم واجهة المستخدم",
+    websiteDevelopment: "تطوير المواقع",
+    mobileApp: "تطبيقات الجوال",
+    fullProject: "مشروع متكامل",
+
+    // Work Experience
+    workExperience: "الخبرة العملية",
+    ourWorkExperience: "خبرتنا العملية",
+    experienceDesigner: "مصمم تجربة",
+    uiUxDesigner: "مصمم واجهة المستخدم",
+    leadUxDesigner: "مصمم تجربة مستخدم رئيسي",
+    workExperienceDescription1: "لوريم إيبسوم دولور سيت أميت، كونسيكتيتور أديبيسينغ إيليت. دويز لاكوس نونك، بوسويري إن جوستو فولوبوتاتي، بيبيندوم سوداليس",
+    workExperienceDescription2: "لوريم إيبسوم دولور سيت أميت، كونسيكتيتور أديبيسينغ إيليت. دويز لاكوس نونك، بوسويري إن جوستو فولوبوتاتي، بيبيندوم سوداليس",
+
+    // Portfolio
+    ecommerce: "المتاجر الألكترونية",
+    dashboard: "لوحات التحكم",
+    landingPage: "صفحات الهبوط",
+    business: "الأعمال",
+    visitWebsite: "زيارة الموقع",
+    more: "المزيد",
 
     // Footer
     footerDescription: 'نحن نبتكر ونطور ونرتقي بأفكارك إلى مستوى جديد من الاحترافية.',

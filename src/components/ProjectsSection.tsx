@@ -2,19 +2,23 @@ import { ArrowUpRightIcon } from "lucide-react";
 import React, { useState } from "react";
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
+import { useTheme } from "@/contexts/ThemeContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import webdev from "/Frame 62 (1).png";
 import ellip from "/Ellipse 5.png";
 import arrow from "/Deco-img-arrow.png";
 
 export const ProjectsSection = (): JSX.Element => {
+  const { theme } = useTheme();
+  const { t, language } = useLanguage();
   const [activeFilter, setActiveFilter] = useState("All");
 
   const filterButtons = [
-    { id: "All", label: "All" },
-    { id: "UI UX Design", label: "UI UX Design" },
-    { id: "Website Development", label: "Website Development" },
-    { id: "Mobile App", label: "Mobile App" },
-    { id: "Full Project", label: "Full Project" },
+    { id: "All", labelKey: "all" },
+    { id: "UI UX Design", labelKey: "uiUxDesign" },
+    { id: "Website Development", labelKey: "websiteDevelopment" },
+    { id: "Mobile App", labelKey: "mobileApp" },
+    { id: "Full Project", labelKey: "fullProject" },
   ];
 
   const projects = [
@@ -60,20 +64,23 @@ export const ProjectsSection = (): JSX.Element => {
   ];
 
   return (
-    <section className="flex flex-col w-full items-center gap-6 md:gap-8 lg:gap-10 relative px-4 sm:px-6 lg:px-8 mt-64">
+    <section 
+      className="flex flex-col w-full items-center gap-6 md:gap-8 lg:gap-10 relative px-4 sm:px-6 lg:px-8 mt-64"
+      dir={language === "ar" ? "rtl" : "ltr"}
+    >
       <div className="flex flex-col items-center gap-6 md:gap-8 lg:gap-10 relative w-full ">
-        <img src={ellip} alt="" className="absolute top-[-4%] left-[41%] " />
-        <img src={arrow} alt="" className="absolute top-[-40%] left-[20%] " />
+        <img src={ellip} alt="" className="absolute top-[-4%] left-[41%] dark:opacity-60" />
+        <img src={arrow} alt="" className="absolute top-[-40%] left-[20%] dark:opacity-60" />
         {/* Header Section */}
         <header className="inline-flex flex-col items-center gap-2 relative translate-y-[-1rem] animate-fade-in opacity-0">
           <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-orange rounded-full flex items-center justify-center">
             <span className="[font-family:'Poppins',Helvetica] font-medium text-white text-xs sm:text-sm md:text-base md:text-[24px] mt-4">
-              Projects
+              {t("projects")}
             </span>
           </div>
 
-          <h2 className="font-semibold text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center relative w-fit [font-family:'Poppins',Helvetica] tracking-[0] leading-[normal] mt-2">
-            Our Works
+          <h2 className="font-semibold text-foreground dark:text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center relative w-fit [font-family:'Poppins',Helvetica] tracking-[0] leading-[normal] mt-2">
+            {t("ourWorks")}
           </h2>
         </header>
 
@@ -85,13 +92,13 @@ export const ProjectsSection = (): JSX.Element => {
               onClick={() => setActiveFilter(filter.id)}
               className={`px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 h-auto inline-flex items-center justify-center gap-2.5 relative rounded-full transition-colors text-sm sm:text-base whitespace-nowrap ${
                 activeFilter === filter.id
-                  ? "bg-orange text-white"
-                  : "bg-transparent text-white hover:bg-orange/20"
+                  ? "bg-orange text-white dark:bg-orange dark:text-white"
+                  : "bg-transparent text-foreground dark:text-white hover:bg-orange/20 dark:hover:bg-orange/20 border border-border dark:border-gray-700"
               }`}
               variant="ghost"
             >
               <span className="relative w-fit [font-family:'Poppins',Helvetica] font-normal tracking-[0] leading-[normal]">
-                {filter.label}
+                {t(filter.labelKey)}
               </span>
             </Button>
           ))}
@@ -102,24 +109,24 @@ export const ProjectsSection = (): JSX.Element => {
           {projects.map((project, index) => (
             <Card
               key={project.id}
-              className="relative group cursor-pointer transition-transform hover:scale-105 w-full max-w-xs mx-auto rounded-2xl overflow-hidden"
+              className="relative group cursor-pointer transition-transform hover:scale-105 w-full max-w-xs mx-auto rounded-2xl overflow-hidden bg-card dark:bg-gray-800 border border-border dark:border-gray-700"
             >
               <CardContent className="p-0 relative">
-                <div className="flex flex-col w-full h-64 sm:h-72 md:h-80 items-center justify-end gap-3 sm:gap-4 md:gap-5 relative rounded-2xl overflow-hidden bg-gradient-to-b from-orange-400 to-orange-500">
+                <div className="flex flex-col w-full h-64 sm:h-72 md:h-80 items-center justify-end gap-3 sm:gap-4 md:gap-5 relative rounded-2xl overflow-hidden bg-gradient-to-b from-orange-400 to-orange-500 dark:from-orange-500 dark:to-orange-600">
                   {/* Project Type Label */}
-                  <div className="absolute top-3 left-3 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1">
+                  <div className="absolute top-3 left-3 bg-white/20 dark:bg-black/30 backdrop-blur-sm rounded-full px-3 py-1">
                     <span className="text-white text-xs sm:text-sm font-medium ">
                      
                     </span>
                   </div>
 
                   <img
-                    className=" absolute top-0 left-0 w-full h-full object-cover mix-blend-overlay"
+                    className=" absolute top-0 left-0 w-full h-full object-cover mix-blend-overlay dark:opacity-80"
                     alt="Project background"
                     src={project.backgroundImage}
                   />
 
-                  <h1 className="  relative text-white flex-[0_0_auto] z-10   object-contain transform -translate-y-9 text-[25px]">
+                  <h1 className="  relative text-white flex-[0_0_auto] z-10   object-contain transform -translate-y-9 text-[25px] font-semibold">
                     {project.label}
                   </h1>
 
@@ -131,7 +138,7 @@ export const ProjectsSection = (): JSX.Element => {
                 </div>
 
                 <Button
-                  className="flex w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 items-center justify-center gap-2.5 p-2 sm:p-3 absolute bottom-[-24px] right-4 bg-black rounded-full border-2 border-solid border-white hover:bg-gray-800 transition-colors shadow-lg"
+                  className="flex w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 items-center justify-center gap-2.5 p-2 sm:p-3 absolute bottom-[-24px] right-4 bg-black dark:bg-gray-900 rounded-full border-2 border-solid border-white dark:border-gray-700 hover:bg-gray-800 dark:hover:bg-gray-700 transition-colors shadow-lg"
                   variant="ghost"
                 >
                   <ArrowUpRightIcon className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white" />
@@ -149,8 +156,8 @@ export const ProjectsSection = (): JSX.Element => {
             key={dot.id}
             className={`relative rounded-full transition-colors ${
               dot.active
-                ? "w-3 h-3 bg-orange"
-                : "w-2 h-2 bg-gray-400 hover:bg-gray-300"
+                ? "w-3 h-3 bg-orange dark:bg-orange"
+                : "w-2 h-2 bg-gray-400 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500"
             }`}
             aria-label={`Go to page ${dot.id}`}
           />
