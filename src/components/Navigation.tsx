@@ -172,7 +172,7 @@ const Navigation = () => {
             </motion.div>
 
             {/* Desktop Navigation Links */}
-            <div className="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
+            <div className={`hidden md:flex items-center ${language === 'ar' ? 'space-x-12 rtl:space-x-reverse' : 'space-x-8 rtl:space-x-reverse'}`}>
               {navigationLinks.map((link, index) => {
                 const isServicesLink = link.id === 'services';
                 const linkContent = (

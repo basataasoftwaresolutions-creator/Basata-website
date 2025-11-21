@@ -38,7 +38,7 @@ export const Testimonials = (): JSX.Element => {
             <img
               className="w-full h-full object-cover"
               alt="Men"
-              src="/public/test_placeholder.png"
+              src="/test_placeholder.png"
             />
           </div>
 
@@ -52,7 +52,7 @@ export const Testimonials = (): JSX.Element => {
                     <img
                       className="flex-shrink-0"
                       alt="Rating"
-                      src="/public/rating.png"
+                      src="/rating.png"
                     />
 
                     <span className="[font-family:'Inter',Helvetica] font-semibold text-black text-lg leading-6">
@@ -89,10 +89,10 @@ export const Testimonials = (): JSX.Element => {
         </div>
       </div>
       <div className="absolute top-[10%] left-[5%]">
-        <img src="/public/Deco-img-arrow.png" alt="" />
+        <img src="/Deco-img-arrow.png" alt="" />
       </div>
       <div className="absolute top-[42%] right-[-11%] ">
-        <img src="/public/test-circle.png" alt="" />
+        <img src="/test-circle.png" alt="" />
       </div>
     </section>
    </>
