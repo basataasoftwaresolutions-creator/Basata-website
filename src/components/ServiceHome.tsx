@@ -1,12 +1,13 @@
-// src/components/ServiceHome.tsx
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { Smartphone, Palette, Globe, Layers } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const ServiceHome = () => {
   const { t, language } = useLanguage();
   const { theme } = useTheme();
+  const navigate = useNavigate();
 
   const services = [
     {
@@ -18,6 +19,7 @@ const ServiceHome = () => {
       gradient: "from-blue-500 to-cyan-500",
       bgColor: "bg-blue-50 dark:bg-blue-900/20",
       iconColor: "text-blue-600 dark:text-blue-400",
+      category: "apps"
     },
     {
       id: 2,
@@ -28,6 +30,7 @@ const ServiceHome = () => {
       gradient: "from-orange-500 to-red-500",
       bgColor: "bg-orange-50 dark:bg-orange-900/20",
       iconColor: "text-orange-600 dark:text-orange-400",
+      category: "design"
     },
     {
       id: 3,
@@ -38,6 +41,7 @@ const ServiceHome = () => {
       gradient: "from-green-500 to-emerald-500",
       bgColor: "bg-green-50 dark:bg-green-900/20",
       iconColor: "text-green-600 dark:text-green-400",
+      category: "web"
     },
     {
       id: 4,
@@ -48,8 +52,14 @@ const ServiceHome = () => {
       gradient: "from-purple-500 to-pink-500",
       bgColor: "bg-purple-50 dark:bg-purple-900/20",
       iconColor: "text-purple-600 dark:text-purple-400",
+      category: "full_projects"
     },
   ];
+
+  const handleServiceClick = (category: string) => {
+    navigate(`/services?category=${category}`);
+    window.scrollTo(0, 0);
+  };
 
   return (
     <section
@@ -146,7 +156,10 @@ const ServiceHome = () => {
                       backdrop-blur-sm
                       h-full flex flex-col
                       overflow-hidden
-                    `}>
+                      cursor-pointer
+                    `}
+                    onClick={() => handleServiceClick(service.category)}
+                    >
                       
                       {/* Content الأساسي - يظهر دائماً */}
                       <div className="relative z-20 flex flex-col h-full">

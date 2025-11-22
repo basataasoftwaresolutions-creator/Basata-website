@@ -1,14 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, Clock, ArrowRight } from "lucide-react";
-
-import { useLanguage } from '../contexts/LanguageContext';
-import { useTheme } from '../contexts/ThemeContext';
+import { Check, Clock, Star, Zap, ArrowRight, X } from "lucide-react";
+import { useSearchParams } from "react-router-dom";
 
 const ServiceDetails = () => {
-  const { language } = useLanguage();
-  const { theme } = useTheme();
+  const { t, language } = useLanguage();
   const [activeCategory, setActiveCategory] = useState("all");
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    const category = searchParams.get("category");
+    if (category) {
+      setActiveCategory(category);
+      setTimeout(() => {
+        const element = document.getElementById("service-details");
+        if (element) {
+          const headerOffset = 100; // Adjust this value based on your header height
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
+        }
+      }, 100);
+    }
+  }, [searchParams]);
 
   const services = {
     design: [
@@ -295,17 +314,23 @@ const ServiceDetails = () => {
                   : "We offer a variety of packages to suit your needs and budget"}
               </p>
 
-              {/* Category Filter */}
-              <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mt-8">
+              {/* Category Filter - responsive */}
+              <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mt-6 sm:mt-8">
                 {categories.map((cat) => (
                   <button
                     key={cat.id}
-                    onClick={() => setActiveCategory(cat.id)}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                      activeCategory === cat.id
-                        ? "bg-orange-500 text-white shadow-lg"
-                        : "bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 hover:bg-orange-500/10 dark:hover:bg-orange-500/20 border border-gray-200 dark:border-gray-700"
-                    }`}
+                    onClick={() => {
+                      setActiveCategory(cat.id);
+                      const newUrl = new URL(window.location.href);
+                      newUrl.searchParams.set("category", cat.id);
+                      window.history.pushState({}, "", newUrl);
+                    }}
+                    className={`px-4 py-2 sm:px-6 sm:py-2.5 rounded-full text-sm sm:text-base font-medium transition-all duration-300
+                      ${
+                        activeCategory === cat.id
+                          ? "bg-orange-500 text-white shadow-lg shadow-orange-500/30 scale-105"
+                          : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+                      }`}
                   >
                     {language === "ar" ? cat.nameAr : cat.nameEn}
                   </button>
