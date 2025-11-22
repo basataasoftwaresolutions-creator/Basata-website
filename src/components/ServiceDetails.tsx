@@ -258,7 +258,7 @@ const ServiceDetails = () => {
         {/* الصورة اليسرى - responsive - ثابتة */}
         <div className="absolute left-0 top-1/2 transform -translate-y-1/2 z-0 hidden lg:block pointer-events-none">
           <img
-            src="../../public/SVG/design.svg"
+            src="/SVG/design.svg"
             alt="Left decoration"
             className="w-[300px] h-[300px] lg:w-[400px] lg:h-[400px] xl:w-[500px] xl:h-[500px] 2xl:w-[600px] 2xl:h-[600px] mt-[60px] lg:mt-[80px] xl:mt-[80px] opacity-60 dark:opacity-40"
           />
@@ -281,7 +281,7 @@ const ServiceDetails = () => {
             >
               {/* Arrow Image - fixed size */}
               <img
-                src="../../public/SVG/Deco-img-arrow.svg"
+                src="/SVG/Deco-img-arrow.svg"
                 alt="arrow"
                 className="w-[400px] h-[150px] mx-auto pr-10 sm:pr-20 md:pr-24 lg:pr-[120px] xl:pr-[180px] 2xl:pr-[200px] opacity-70 dark:opacity-50 hover:opacity-100 dark:hover:opacity-80 transition-opacity duration-300"
               />
@@ -293,7 +293,7 @@ const ServiceDetails = () => {
                 </span>
                 <span className="">
                   <img
-                    src="../../public/SVG/Ellipse 5.svg"
+                    src="/SVG/Ellipse 5.svg"
                     alt="Ellipse 5"
                     className="w-12 h-12 sm:w-16 sm:h-16 md:w-18 md:h-18 absolute -top-2 sm:-top-3 right-[80px] sm:right-[100px] md:right-[120px] lg:right-[130px] z-10 opacity-80 dark:opacity-60"
                   />

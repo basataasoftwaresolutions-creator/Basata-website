@@ -15,7 +15,7 @@ const ServiceHome = () => {
       title: t("mobileApps"),
       description: t("mobileAppsDescription"),
       icon: Smartphone,
-      image: "../../public/SVG/app-data/cuate.svg",
+      image: "/SVG/app-data/cuate.svg",
       gradient: "from-blue-500 to-cyan-500",
       bgColor: "bg-blue-50 dark:bg-blue-900/20",
       iconColor: "text-blue-600 dark:text-blue-400",
@@ -26,7 +26,7 @@ const ServiceHome = () => {
       title: t("uiUxDesign"),
       description: t("uiUxDesignDescription"),
       icon: Palette,
-      image: "../../public/SVG/ui-ux-differences/rafiki.svg",
+      image: "/SVG/ui-ux-differences/rafiki.svg",
       gradient: "from-orange-500 to-red-500",
       bgColor: "bg-orange-50 dark:bg-orange-900/20",
       iconColor: "text-orange-600 dark:text-orange-400",
@@ -37,7 +37,7 @@ const ServiceHome = () => {
       title: t("webDevelopment"),
       description: t("webDevelopmentDescription"),
       icon: Globe,
-      image: "../../public/SVG/web-devices/pana.svg",
+      image: "/SVG/web-devices/pana.svg",
       gradient: "from-green-500 to-emerald-500",
       bgColor: "bg-green-50 dark:bg-green-900/20",
       iconColor: "text-green-600 dark:text-green-400",
@@ -48,7 +48,7 @@ const ServiceHome = () => {
       title: t("fullProject"),
       description: t("fullProjectDescription"),
       icon: Layers,
-      image: "../../public/SVG/website-setup/cuate.svg",
+      image: "/SVG/website-setup/cuate.svg",
       gradient: "from-purple-500 to-pink-500",
       bgColor: "bg-purple-50 dark:bg-purple-900/20",
       iconColor: "text-purple-600 dark:text-purple-400",
@@ -78,7 +78,7 @@ const ServiceHome = () => {
       <div className="absolute left-0 top-1/2 transform -translate-y-1/2 z-0
         hidden sm:block lg:left-0 xl:left-0">
         <img
-          src="../../public/SVG/design.svg" 
+          src="/SVG/design.svg" 
           alt="Left decoration"
           className="w-[600px] h-[600px] sm:w-[500px] sm:h-[500px] mt-[275px] opacity-80"
         />
@@ -88,7 +88,7 @@ const ServiceHome = () => {
       <div className="absolute right-0 top-0 z-0
         hidden sm:block lg:right-0 xl:right-0">
         <img
-          src="../../public/SVG/half-arrow.svg"
+          src="/SVG/half-arrow.svg"
           alt="Right decoration"
           className="w-[550px] h-[550px] sm:w-[450px] sm:h-[450px] mt-[250px] opacity-30"
         />
@@ -111,7 +111,7 @@ const ServiceHome = () => {
               className="text-center mb-16"
             >
               <img
-                src="../../public/SVG/Deco-img-arrow.svg"
+                src="/SVG/Deco-img-arrow.svg"
                 alt="arrow"
                 className="w-45 h-40 mb-1 mx-auto pr-28"
               />
@@ -121,7 +121,7 @@ const ServiceHome = () => {
                 </span>
                 <span className="">
                   <img
-                    src="../../public/SVG/Ellipse 5.svg"
+                    src="/SVG/Ellipse 5.svg"
                     alt="Ellipse 5"
                     className="w-18 h-18 absolute -top-4 right-14 z-10"
                   />

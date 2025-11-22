@@ -16,14 +16,68 @@ const Navigation = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Handle scroll effect
+  // Handle scroll effect and active link detection
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
+      
+      // Only update active link if we're on the home page
+      if (location.pathname !== '/') {
+        return;
+      }
+      
+      // Update active link based on scroll position
+      const scrollPosition = window.scrollY + 150; // Offset for better detection
+      
+      // Check if we're at the top (home section)
+      if (window.scrollY < 100) {
+        setActiveLink('home');
+        return;
+      }
+      
+      // Check sections that exist, ordered from bottom to top
+      const sections = [
+        { id: 'contact', elementId: 'contact-form' },
+        { id: 'contact', elementId: 'contact' },
+        { id: 'team', elementId: 'team' },
+        { id: 'projects', elementId: 'projects' },
+        { id: 'services', elementId: 'services' },
+        { id: 'about', elementId: 'about-us' },
+      ];
+      
+      // Check each section from bottom to top
+      for (let i = 0; i < sections.length; i++) {
+        const section = sections[i];
+        const element = document.getElementById(section.elementId);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          const elementTop = rect.top + window.scrollY;
+          
+          if (scrollPosition >= elementTop - 100) {
+            setActiveLink(section.id);
+            return;
+          }
+        }
+      }
+      
+      // If no section found but we're scrolled, default to home
+      if (window.scrollY > 100) {
+        setActiveLink('home');
+      }
     };
+    
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Call once on mount to set initial active link
+    
+    // Also update active link when location changes
+    if (location.pathname === '/services') {
+      setActiveLink('services');
+    } else if (location.pathname === '/') {
+      handleScroll();
+    }
+    
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [location.pathname]);
 
   // Close menu on window resize
   useEffect(() => {
@@ -149,7 +203,7 @@ const Navigation = () => {
         scrolled 
           ? 'backdrop-blur-lg bg-[#222323]/95 dark:bg-[#0a0a0a]/95 shadow-lg' 
           : 'backdrop-blur-md bg-[#222323]/90 dark:bg-[#0a0a0a]/90'
-      } border-b border-white/10`} dir="ltr" style={{ direction: 'ltr' }}>
+      } border-b border-white/10`} dir={'ltr'}>
         <div className="container mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
@@ -172,7 +226,7 @@ const Navigation = () => {
             </motion.div>
 
             {/* Desktop Navigation Links */}
-            <div className="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
+            <div className="hidden md:flex items-center gap-8">
               {navigationLinks.map((link, index) => {
                 const isServicesLink = link.id === 'services';
                 const linkContent = (

@@ -713,7 +713,7 @@ const ContactForm = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-orange/20 to-blue-500/20 rounded-3xl blur-3xl"></div>
               <div className="relative z-10">
                 <img
-                  src="../../public/SVG/amico.svg"
+                  src="/SVG/amico.svg"
                   alt="Contact Us"
                   className="w-full h-[800px] object-contain"
                 />
