@@ -18,18 +18,18 @@ const translations = {
     projects: 'Projects',
     ourTeam: 'Our Team',
     contactUs: 'Contact Us',
-    
+
     // Hero
     heroTitle: 'We innovate, develop, and elevate your ideas to a new',
     heroTitleHighlight: 'level of professionalism.',
     heroSubtitle: 'We specialize in:',
-    
+
     // Stats
-    project: 'Projects',
-    rating: 'Ratings',
-    work: 'Works',
-    service: 'Services',
-    
+    statProjects: 'Our Projects',
+    statRatings: 'Client Ratings',
+    statMembers: 'Team Experts',
+    statServices: 'Service Excellence',
+
     // About
     aboutTitle: 'What you need to know',
     aboutDescription1: 'We are not just another tech company — we are your growth partner.',
@@ -39,7 +39,7 @@ const translations = {
     aboutDescription5: 'Commitment to Quality: We deliver fast, but we never compromise on quality.',
     aboutDescription6: 'Long-Term Support: We believe in building long-lasting partnerships, not just projects.',
     aboutDescription7: "Let's create something great together.",
-    
+
     // Services
     servicesTitle: 'What we do?',
     servicesSubtitle: 'Services',
@@ -52,11 +52,11 @@ const translations = {
     fullProject: 'Full Project',
     fullProjectDescription: 'From concept to deployment, we handle complete project development including planning, design, development, testing, and maintenance to deliver comprehensive solutions.',
 
-     // Contact Form
+    // Contact Form
     contactFormTitle: 'Get in Touch',
     contactFormSubtitle: 'Contact Us',
     contactFormDescription: 'Ready to start your project? Fill out the form and we\'ll get back to you within 24 hours.',
-    
+
     // Form Fields
     fullName: 'Full Name',
     firstName: 'First name...',
@@ -72,7 +72,7 @@ const translations = {
     discountCode: 'Your Discount Code',
     discountCodeOptional: '(if you have)',
     discountCodePlaceholder: 'Enter the discount code',
-    
+
     // Payment
     paymentTitle: 'Payment',
     paymentSecure: 'All transactions are secure and encrypted.',
@@ -84,14 +84,14 @@ const translations = {
     electronicWallets: 'Electronic wallets (Orange cash, Vodafone cash...)',
     phoneNumber: 'Enter your phone number',
     sendService: 'Send your service',
-    
+
     // Timeline Options
     timeline1Week: '1 Week',
     timeline2Weeks: '2 Weeks',
     timeline1Month: '1 Month',
     timeline2Months: '2 Months',
     timeline3Months: '3+ Months',
-    
+
     // Budget Options
     budget500: 'Under $500',
     budget1000: '$500 - $1,000',
@@ -103,7 +103,7 @@ const translations = {
     testimonialTitle: "Testimonial",
     testimonialSubtitle: "Our Client Feedback",
     testimonialFeedback: "The team took time to understand our vision and delivered a sleek, professional site that not only looks great but also improved our conversion rates. Their design process was smooth, communication was clear, and they met all deadlines. We've received numerous compliments on the new site, and it's easier for customers to navigate. I can confidently say we'll be working with them again in the future.\"\"",
-    
+
     // Projects
     ourWorks: "Our Works",
     all: "All",
@@ -111,7 +111,7 @@ const translations = {
     websiteDevelopment: "Website Development",
     mobileApp: "Mobile App",
     fullProject: "Full Project",
-    
+
     // Work Experience
     workExperience: "Work Experience",
     ourWorkExperience: "Our Work Experience",
@@ -120,7 +120,7 @@ const translations = {
     leadUxDesigner: "Lead UX Designer",
     workExperienceDescription1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus nunc, posuere in justo vulputate, bibendum sodales",
     workExperienceDescription2: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus nunc, posuere in justo vulputate, bibendum sodales",
-    
+
     // Portfolio
     ecommerce: "E-commerce",
     dashboard: "Dashboard",
@@ -128,7 +128,7 @@ const translations = {
     business: "Business",
     visitWebsite: "Visit Website",
     more: "More",
-    
+
     // Footer
     footerDescription: 'We innovate, develop, and elevate your ideas to a new level of professionalism.',
     pages: 'Pages',
@@ -143,18 +143,18 @@ const translations = {
     projects: 'المشاريع',
     ourTeam: 'فريقنا',
     contactUs: 'تواصل معنا',
-    
+
     // Hero
     heroTitle: 'نحن نبتكر ونطور ونرتقي بأفكارك إلى',
     heroTitleHighlight: 'مستوى جديد من الاحترافية.',
     heroSubtitle: 'نحن متخصصون في : ',
-    
+
     // Stats
-    project: 'مشروع',
-    rating: 'تقييم',
-    work: 'عمل',
-    service: 'خدمة',
-    
+    statProjects: 'أعداد مشاريعنا',
+    statRatings: 'تقييمات العملاء',
+    statMembers: 'خبرات الفريق',
+    statServices: 'تميز الخدمات',
+
     // About
     aboutTitle: 'ما تحتاج إلى معرفته',
     aboutDescription1: 'نحن لسنا مجرد شركة تقنية أخرى — نحن شريكك في النمو.',
@@ -164,7 +164,7 @@ const translations = {
     aboutDescription5: 'الالتزام بالجودة: نقدم بسرعة، لكننا لا نتنازل أبدًا عن الجودة.',
     aboutDescription6: 'الدعم طويل المدى: نؤمن ببناء شراكات طويلة الأمد، وليس مجرد مشاريع.',
     aboutDescription7: 'دعنا نصنع شيئًا رائعًا معًا.',
-    
+
     // Services
     servicesTitle: 'اى اللى بنقدمهولك ؟',
     servicesSubtitle: 'خدمتنا',
@@ -177,11 +177,11 @@ const translations = {
     fullProject: 'مشروع متكامل',
     fullProjectDescription: 'من المفهوم إلى النشر، نتعامل مع تطوير المشروع الكامل بما في ذلك التخطيط والتصميم والتطوير والاختبار والصيانة لتقديم حلول شاملة.',
 
-     // Contact Form
+    // Contact Form
     contactFormTitle: 'تواصل معنا',
     contactFormSubtitle: 'اتصل بنا',
     contactFormDescription: 'مستعد لبدء مشروعك؟ املأ النموذج وسنتواصل معك خلال 24 ساعة.',
-    
+
     // Form Fields
     fullName: 'الاسم الكامل',
     firstName: 'الاسم الأول...',
@@ -197,7 +197,7 @@ const translations = {
     discountCode: 'كود الخصم',
     discountCodeOptional: '(إن وجد)',
     discountCodePlaceholder: 'أدخل كود الخصم',
-    
+
     // Payment
     paymentTitle: 'الدفع',
     paymentSecure: 'جميع المعاملات آمنة ومشفرة.',
@@ -209,14 +209,14 @@ const translations = {
     electronicWallets: 'المحافظ الإلكترونية (أورانج كاش، فودافون كاش...)',
     phoneNumber: 'أدخل رقم هاتفك',
     sendService: 'إرسال طلب الخدمة',
-    
+
     // Timeline Options
     timeline1Week: 'أسبوع واحد',
     timeline2Weeks: 'أسبوعين',
     timeline1Month: 'شهر واحد',
     timeline2Months: 'شهرين',
     timeline3Months: '3+ أشهر',
-    
+
     // Budget Options
     budget500: 'أقل من 500$',
     budget1000: '500$ - 1,000$',
